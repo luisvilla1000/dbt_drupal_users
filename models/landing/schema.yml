@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: public
+    description: Data from application database, brought in by an EL process.
+    tables:
+      - name: drupal_users
+        columns:
+        - name: uid
+          tests:
+            - not_null
+
+      - name: drupal_users_field_data
+        columns:
+        - name: uid
+          tests:
+            - relationships:
+                to: source('public', 'drupal_users')
+                field: uid

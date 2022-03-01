@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: drupal_users_plain
+    columns:
+      - name: uid
+        tests:
+          - not_null
