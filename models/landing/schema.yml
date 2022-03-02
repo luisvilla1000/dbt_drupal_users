@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: public
+  - name: landing
     description: Data from application database, brought in by an EL process.
     tables:
       - name: drupal_users
@@ -15,5 +15,5 @@ sources:
         - name: uid
           tests:
             - relationships:
-                to: source('public', 'drupal_users')
+                to: source('landing', 'drupal_users')
                 field: uid

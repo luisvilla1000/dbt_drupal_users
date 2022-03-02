@@ -1,10 +1,10 @@
 with users as (
     select *
-    from {{ source('public', 'drupal_users') }}
+    from {{ source('landing', 'drupal_users') }}
 ),
 users_field_data as (
     select *
-    from {{ source('public', 'drupal_users_field_data') }}
+    from {{ source('landing', 'drupal_users_field_data') }}
 )
 select u.uid,
     u.uuid,

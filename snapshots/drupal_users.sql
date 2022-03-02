@@ -2,7 +2,7 @@
 
 {{
     config(
-      target_database='landing',
+      target_database='axioma',
       target_schema='snapshots',
       unique_key='uid',
 
@@ -11,6 +11,6 @@
     )
 }}
 
-select * from {{ source('public', 'drupal_users_field_data') }}
+select * from {{ source('landing', 'drupal_users_field_data') }}
 
 {% endsnapshot %}
