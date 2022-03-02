@@ -7,7 +7,5 @@ select u.uid,
     u.mail,
     u.name,
     u.created,
-    u.changed,
-    u.access,
     u.status
 from users u

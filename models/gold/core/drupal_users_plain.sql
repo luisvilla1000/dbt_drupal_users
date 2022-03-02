@@ -1,18 +1,26 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='changed'
+    )
+}}
+
 with users as (
     select *
-    from {{ source('landing', 'drupal_users') }}
-),
-users_field_data as (
-    select *
-    from {{ source('landing', 'drupal_users_field_data') }}
+    from {{ ref('stg_drupal_users_plain') }}
 )
 select u.uid,
     u.uuid,
-    ud.mail,
-    ud.name,
-    ud.created,
-    ud.changed,
-    ud.access,
-    ud.status
+    u.mail,
+    u.name,
+    u.created,
+    u.changed,
+    u.access,
+    u.status
 from users u
-    join users_field_data ud on u.uid = ud.uid
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  where u.changed >= (select max(u.changed) from {{ this }})
+
+{% endif %}
