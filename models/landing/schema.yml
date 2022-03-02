@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: landing
-    description: Data from application database, brought in by an EL process.
+    description: DataLake
     tables:
       - name: drupal_users
         columns:

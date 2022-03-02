@@ -35,5 +35,8 @@ models:
   drupal_users:
     # Config indicated by + and applies to all files under models/example/
     gold:
-      +materialized: view
       +schema: gold
+      core:
+        +materialized: table
+      comercial: 
+        +materialized: view
