@@ -3,7 +3,7 @@
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
 name: 'drupal_users'
-version: '1.0.4'
+version: '1.0.5'
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
@@ -23,7 +23,6 @@ target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
-
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models

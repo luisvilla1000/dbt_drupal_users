@@ -13,9 +13,10 @@ select u.uid,
     u.uuid,
     u.mail,
     u.name,
-    u.created,
     u.changed,
-    u.access,
+    u.created_date,
+    u.changed_date,
+    u.access_date,
     u.status
 from users u
 {% if is_incremental() %}

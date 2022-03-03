@@ -6,6 +6,6 @@ select u.uid,
     u.uuid,
     u.mail,
     u.name,
-    u.created,
+    u.created_date,
     u.status
 from users u
