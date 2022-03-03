@@ -21,6 +21,6 @@ from users u
 {% if is_incremental() %}
 
   -- this filter will only be applied on an incremental run
-  where u.changed >= (select max(changed) from {{ this }})
+  where u.changed >= (select COALESCE(MAX(changed), 0) from {{ this }})
 
 {% endif %}
