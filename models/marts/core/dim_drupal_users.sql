@@ -1,22 +1,24 @@
 {{
     config(
         materialized='incremental',
-        unique_key='changed'
+        unique_key='changed_at',
+        sort='created_at',
+        dist='uid',
     )
 }}
 
 with users as (
     select *
-    from {{ ref('stg_drupal_users_plain') }}
+    from {{ ref('stg_drupal_users__unioned') }}
 )
 select u.uid,
     u.uuid,
     u.mail,
     u.name,
     u.changed,
-    u.created_date,
-    u.changed_date,
-    u.access_date,
+    u.created_at,
+    u.changed_at,
+    u.access_at,
     u.status
 from users u
 {% if is_incremental() %}

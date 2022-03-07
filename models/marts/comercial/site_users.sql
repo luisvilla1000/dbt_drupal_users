@@ -1,11 +1,11 @@
 with users as (
     select *
-    from {{ ref('drupal_users_plain') }}
+    from {{ ref('dim_drupal_users') }}
 )
 select u.uid,
     u.uuid,
     u.mail,
     u.name,
-    u.created_date,
+    u.created_at,
     u.status
 from users u
