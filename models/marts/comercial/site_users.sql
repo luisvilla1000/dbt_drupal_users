@@ -3,7 +3,6 @@ with users as (
     from {{ ref('dim_drupal_users') }}
 )
 select u.uid,
-    u.uuid,
     u.mail,
     u.name,
     u.created_at,

@@ -4,14 +4,14 @@ with users as (
 ),
 
 users_field_data as (
-    select uid,
+    select uid::INTEGER,
     mail,
     name,
     changed,
     {{ epoch_to_timestamp('created') }} as created_at,
     {{ epoch_to_timestamp('changed') }} as changed_at,
     {{ epoch_to_timestamp('access') }} as access_at,
-    status
+    status::INTEGER
     from {{ source('landing', 'drupal_users_field_data') }}
 ),
 
